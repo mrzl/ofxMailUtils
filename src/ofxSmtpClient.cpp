@@ -6,10 +6,10 @@
 #include "ofxMailUtils.h"
 
 // ----------------------------------------------------------------------
-ofxSmtpClientUtils::ofxSmtpClientUtils(){
+ofxSmtpClientUtils::ofxSmtpClientUtils( std::string smtpHost, int smtpPort){
 	connected = false;
 	try{
-		session=new Poco::Net::SMTPClientSession(OFX_SMTP_HOST,OFX_SMTP_PORT);
+		session=new Poco::Net::SMTPClientSession(smtpHost,smtpPort);
 		session->login();
 		connected = true;
 	}catch(Poco::Exception e){

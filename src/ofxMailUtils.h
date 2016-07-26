@@ -9,13 +9,6 @@
 
 #include "ofMain.h"
 
-#include "ofxThread.h"
-
-
-
-
-
-
 #include "Poco/Net/MailMessage.h"
 #include "Poco/Net/POP3ClientSession.h"
 #include "Poco/Net/SMTPClientSession.h"
@@ -113,7 +106,7 @@ struct ofxMailAccount{
 	vector<int> alreadyReaded;
 };
 
-class ofxPop3ClientUtils : public ofxThread{
+class ofxPop3ClientUtils : public ofThread{
 
 	public:
 
@@ -152,10 +145,10 @@ class ofxPop3ClientUtils : public ofxThread{
 };
 
 
-class ofxSmtpClientUtils:public ofxThread{
+class ofxSmtpClientUtils:public ofThread{
 public:
 
-	ofxSmtpClientUtils();
+	ofxSmtpClientUtils( std::string smtpHost, int smtpPort );
 	~ofxSmtpClientUtils();
 
 
